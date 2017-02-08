@@ -1,0 +1,43 @@
+.btn:focus, .upload-btn:focus{
+  outline: 0 !important;
+}
+
+body {
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  background-color: #0076BF;
+}
+
+.upload-btn {
+  color:#FFFFFF;
+  background-color: #AF5601;
+}
+
+.upload-btn:hover {
+  color:#FFFFFF;
+  background-color: #FA8900;
+}
+
+h2 {
+  color: #BF5700;
+}
+
+h4 {
+  color: #BF5700;
+}
+
+.progress-bar {
+  background-color: #BF5700;
+}
+
+@media (min-width: 768px) {
+  .main-container {
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 450px;
+  }
+}
