@@ -15,7 +15,17 @@ $('.upload-btn').on('click', function (){
       processData: false,
       contentType: false,
       success: function(data){
-          $("#debug").html('upload successful!\n' + data);
+        var results = '';
+        var resultJSON = JSON.parse(data);
+        var resultArr = resultJSON.results;
+
+        for(var i = 0; i < resultArr.length; i++){
+          results += resultArr[i] + '</br>';
+        }
+
+        $('#titleResults').html("RESULTS");
+        $('.spinner').css("visibility", "hidden");
+        $('#bodyResults').html(results);
       },
       xhr: function() {
         // create an XMLHttpRequest
@@ -35,6 +45,9 @@ $('.upload-btn').on('click', function (){
 
             if (percentComplete === 100) {
               $('.progress-bar').html('Done');
+
+              $('#titleResults').css("visibility", "visible");
+              $('.spinner').css("visibility", "visible");
             }
           }
 
