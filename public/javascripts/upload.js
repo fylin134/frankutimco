@@ -82,3 +82,8 @@ $('#input-file').on('change', function()
   files = $(this).get(0).files;
 
 });
+
+// README handler
+$('#readme').on('click', function (){
+  window.location.replace('/readme');
+});

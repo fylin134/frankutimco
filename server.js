@@ -28,6 +28,24 @@ app.get('/', function(req, res)
 	});
 });
 
+app.get('/readme', function(req, res)
+{
+	var fileName = path.join(__dirname, 'views/readme.html');
+	res.sendFile(fileName, function(err)
+	{
+		if(err)
+		{
+			console.log(err);
+			res.status(err.status).end();
+		}
+		else
+		{
+			console.log('readme.html sent');
+			res.end();
+		}
+	});
+});
+
 app.get('/tests', function(req, res)
 {
 	var fileName = path.join(__dirname, 'views/tests.html');
