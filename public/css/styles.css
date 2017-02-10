@@ -8,6 +8,10 @@ body {
   background-color: #0076BF;
 }
 
+h1{
+  color:white;
+}
+
 .upload-btn {
   color:#FFFFFF;
   background-color: #AF5601;

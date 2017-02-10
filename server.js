@@ -23,6 +23,34 @@ app.get('/', function(req, res)
 		else
 		{
 			console.log('Index.html sent');
+			res.end();
+		}
+	});
+});
+
+app.get('/tests', function(req, res)
+{
+	var fileName = path.join(__dirname, 'views/tests.html');
+	/*fs.readdir(path.join(__dirname, 'uploads'), function(err, files){				
+		for(var i = 0; i < files.length; i++)
+		{
+			var file = files[i];
+			console.log(file.name);
+			var name = file.name;
+			fs.appendFile(fileName, '<button>'+file+'</button>');
+		}
+	});*/
+	res.sendFile(fileName, function(err)
+	{
+		if(err)
+		{
+			console.log(err);
+			res.status(err.status).end();
+		}
+		else
+		{
+			console.log('tests.html sent');
+			res.end();
 		}
 	});
 });
@@ -91,6 +119,8 @@ function doSomething(file)
 			}
 		}		
 	}
+	var fileName = path.join(__dirname, 'views/tests.html');
+	fs.appendFile(fileName, '<button id="'+file.name+'">'+file.name + '</button><br></br>');
 
 	return resultsObj;
 }

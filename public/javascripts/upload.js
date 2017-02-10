@@ -1,7 +1,8 @@
 var files;
 
-$('.upload-btn').on('click', function (){
-  
+$('.upload-btn').on('click', function ()
+{
+  $('#debug').html('fasdfqasg');
   if(files.length > 0)
   {
     var formData = new FormData();
@@ -14,12 +15,14 @@ $('.upload-btn').on('click', function (){
       data: formData,
       processData: false,
       contentType: false,
-      success: function(data){
+      success: function(data)
+      {
         var results = '';
         var resultJSON = JSON.parse(data);
         var resultArr = resultJSON.results;
 
-        for(var i = 0; i < resultArr.length; i++){
+        for(var i = 0; i < resultArr.length; i++)
+        {
           results += resultArr[i] + '</br>';
         }
 
@@ -27,14 +30,16 @@ $('.upload-btn').on('click', function (){
         $('.spinner').css("visibility", "hidden");
         $('#bodyResults').html(results);
       },
-      xhr: function() {
+      xhr: function() 
+      {
         // create an XMLHttpRequest
         var xhr = new XMLHttpRequest();
 
         // listen to the 'progress' event
         xhr.upload.addEventListener('progress', function(evt) {
 
-          if (evt.lengthComputable) {
+          if (evt.lengthComputable) 
+          {
             // calculate the percentage of upload completed
             var percentComplete = evt.loaded / evt.total;
             percentComplete = parseInt(percentComplete * 100);
@@ -62,7 +67,8 @@ $('.upload-btn').on('click', function (){
   $('.progress-bar').width('0%');
 });
 
-$('#input-file').on('change', function(){
+$('#input-file').on('change', function()
+{
 
   files = $(this).get(0).files;
 
