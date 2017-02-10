@@ -89,9 +89,18 @@ app.post('/upload', function(req, res)
 function doSomething(file)
 {
 	var uploadDir = path.join(__dirname, 'uploads');
-	var jsonArr = JSON.parse(fs.readFileSync(path.join(uploadDir, file.name), 'utf8'));
-	
+	var jsonArr;
 	var resultsObj = {"results": []};
+
+	try{
+		jsonArr = JSON.parse(fs.readFileSync(path.join(uploadDir, file.name), 'utf8'));
+	}
+	catch(e){
+		resultsObj = {"results" : "error"};
+		return resultsObj;
+	}
+	
+	
 
 	for(var i = 0; i < jsonArr.length; i++)
 	{

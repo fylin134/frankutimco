@@ -1,5 +1,6 @@
 var files;
 
+// Upload Test File Click Handler
 $('.upload-btn').on('click', function ()
 {
   $('#debug').html('fasdfqasg');
@@ -20,15 +21,22 @@ $('.upload-btn').on('click', function ()
         var results = '';
         var resultJSON = JSON.parse(data);
         var resultArr = resultJSON.results;
-
-        for(var i = 0; i < resultArr.length; i++)
-        {
-          results += resultArr[i] + '</br>';
+        if(resultArr == "error"){
+          $('#titleResults').html("Error");
+          $('.spinner').css("visibility", "hidden");
+          $('#bodyResults').html("File does not contain valid json");  
         }
+        else{
+          for(var i = 0; i < resultArr.length; i++)
+          {
+            results += resultArr[i] + '</br>';
+          }
 
-        $('#titleResults').html("RESULTS");
-        $('.spinner').css("visibility", "hidden");
-        $('#bodyResults').html(results);
+          $('#titleResults').html("RESULTS");
+          $('.spinner').css("visibility", "hidden");
+          $('#bodyResults').html(results);  
+        }
+        
       },
       xhr: function() 
       {
@@ -67,6 +75,7 @@ $('.upload-btn').on('click', function ()
   $('.progress-bar').width('0%');
 });
 
+// Input "Browse" file change
 $('#input-file').on('change', function()
 {
 
